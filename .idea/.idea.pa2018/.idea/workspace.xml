@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c8172e9-d597-4e97-8be0-0026bf3f76f6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainScript.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/MainScript.cs" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.pa2018/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.pa2018/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,66 +17,66 @@
       <file leaf-file-name="MainScript.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MainScript.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="276" column="40" lean-forward="false" selection-start-line="276" selection-start-column="40" selection-end-line="276" selection-end-column="40" />
+            <state relative-caret-position="-9">
+              <caret line="230" column="36" lean-forward="false" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
               <folding>
-                <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-                <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-                <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-                <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-                <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-                <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-                <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-                <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-                <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-                <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-                <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-                <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-                <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-                <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-                <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-                <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-                <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-                <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-                <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-                <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-                <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-                <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-                <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-                <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-                <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-                <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-                <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-                <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+                <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+                <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+                <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+                <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+                <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+                <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+                <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+                <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+                <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+                <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+                <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+                <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+                <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+                <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+                <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+                <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+                <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+                <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+                <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+                <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+                <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+                <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+                <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+                <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+                <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+                <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+                <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -286,12 +287,12 @@
       <workItem from="1523562924552" duration="1580000" />
       <workItem from="1523807859262" duration="307000" />
       <workItem from="1523808183179" duration="176000" />
-      <workItem from="1523808399760" duration="7758000" />
+      <workItem from="1523808399760" duration="8995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9990000" />
+    <option name="totallyTimeSpent" value="11227000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -346,63 +347,63 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-            <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-            <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-            <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-            <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-            <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-            <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-            <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-            <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-            <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-            <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-            <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-            <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-            <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-            <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-            <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-            <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-            <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-            <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-            <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-            <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-            <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-            <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-            <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-            <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+            <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+            <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+            <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+            <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+            <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+            <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+            <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+            <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+            <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+            <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+            <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+            <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+            <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+            <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+            <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+            <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+            <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+            <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+            <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+            <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+            <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+            <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+            <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+            <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -496,63 +497,63 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-            <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-            <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-            <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-            <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-            <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-            <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-            <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-            <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-            <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-            <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-            <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-            <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-            <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-            <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-            <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-            <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-            <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-            <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-            <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-            <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-            <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-            <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-            <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-            <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+            <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+            <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+            <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+            <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+            <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+            <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+            <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+            <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+            <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+            <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+            <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+            <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+            <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+            <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+            <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+            <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+            <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+            <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+            <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+            <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+            <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+            <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+            <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+            <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -646,63 +647,63 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-            <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-            <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-            <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-            <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-            <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-            <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-            <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-            <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-            <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-            <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-            <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-            <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-            <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-            <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-            <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-            <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-            <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-            <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-            <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-            <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-            <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-            <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-            <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-            <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+            <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+            <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+            <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+            <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+            <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+            <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+            <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+            <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+            <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+            <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+            <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+            <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+            <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+            <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+            <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+            <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+            <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+            <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+            <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+            <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+            <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+            <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+            <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+            <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -796,63 +797,63 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-            <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-            <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-            <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-            <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-            <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-            <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-            <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-            <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-            <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-            <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-            <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-            <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-            <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-            <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-            <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-            <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-            <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-            <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-            <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-            <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-            <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-            <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-            <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-            <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+            <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+            <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+            <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+            <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+            <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+            <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+            <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+            <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+            <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+            <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+            <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+            <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+            <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+            <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+            <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+            <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+            <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+            <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+            <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+            <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+            <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+            <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+            <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+            <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -943,66 +944,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/MainScript.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="276" column="40" lean-forward="false" selection-start-line="276" selection-start-column="40" selection-end-line="276" selection-end-column="40" />
+        <state relative-caret-position="-9">
+          <caret line="230" column="36" lean-forward="false" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
           <folding>
-            <marker date="1523817607196" expanded="true" signature="6:97" ph="..." />
-            <marker date="1523817607196" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
-            <marker date="1523817607196" expanded="true" signature="329:14981" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
-            <marker date="1523817607196" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
-            <marker date="1523817607196" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
-            <marker date="1523817607196" expanded="true" signature="763:3046" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1018:1305" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1136:1295" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1445:1722" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1563:1712" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1866:2150" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="1984:2140" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2284:2562" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2402:2552" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2681:2947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="2799:2937" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
-            <marker date="1523817607196" expanded="true" signature="3134:3302" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
-            <marker date="1523817607196" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
-            <marker date="1523817607196" expanded="true" signature="3533:6371" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
-            <marker date="1523817607196" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
-            <marker date="1523817607196" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
-            <marker date="1523817607196" expanded="true" signature="4598:6074" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
-            <marker date="1523817607196" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
-            <marker date="1523817607196" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
-            <marker date="1523817607196" expanded="true" signature="5685:5907" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6476:7422" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6824:7088" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="6946:7078" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7518:7572" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7692:7746" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="7858:9947" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8378:8508" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="8695:8932" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9506:9686" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="9606:9676" ph="/* uncomment when implemented inside a while(true) ... */" />
-            <marker date="1523817607196" expanded="true" signature="9769:9862" ph="/* todo generate cross population ... */" />
-            <marker date="1523817607196" expanded="true" signature="9953:10166" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
-            <marker date="1523817607196" expanded="true" signature="10188:10405" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="10411:12242" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
-            <marker date="1523817607196" expanded="true" signature="12303:13767" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12644:12726" ph="/* On lance la simulation en sp�cifiant ... */" />
-            <marker date="1523817607196" expanded="true" signature="12867:12966" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="12976:13187" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
-            <marker date="1523817607196" expanded="true" signature="13479:13555" ph="/* Debug.Log(player.FoundGoal); ... */" />
-            <marker date="1523817607196" expanded="true" signature="13773:14005" ph="/// Execute un changement al�atoire sur une solution ... " />
-            <marker date="1523817607196" expanded="true" signature="14068:14167" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14173:14416" ph="/// Fonction utilitaire ayant pour but de copier ... " />
-            <marker date="1523817607196" expanded="true" signature="14483:14979" ph="{...}" />
-            <marker date="1523817607196" expanded="true" signature="14498:14614" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
-            <marker date="1523817607196" expanded="true" signature="14689:14774" ph="/* Pour chaque action de la s�quence originale, ... */" />
-            <marker date="1523817607196" expanded="true" signature="14827:14909" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6:97" ph="..." />
+            <marker date="1523818228075" expanded="true" signature="99:289" ph="/// Classe principale � utiliser pour impl�menter vos algorithmes ... " />
+            <marker date="1523818228075" expanded="true" signature="329:15101" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="337:427" ph="/// Indique si un algorithme est en cours d'ex�cution ... " />
+            <marker date="1523818228075" expanded="true" signature="470:561" ph="/// Indique si une evaluation de solution est en cours ... " />
+            <marker date="1523818228075" expanded="true" signature="607:739" ph="/// M�thode utilis�e pour g�rer les informations et  ... " />
+            <marker date="1523818228075" expanded="true" signature="763:3046" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1018:1305" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1136:1295" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1445:1722" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1563:1712" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1866:2150" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="1984:2140" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2284:2562" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2402:2552" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2681:2947" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="2799:2937" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3052:3117" ph="/// Initialisation du script ... " />
+            <marker date="1523818228075" expanded="true" signature="3134:3302" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3149:3252" ph="/* Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me ... */" />
+            <marker date="1523818228075" expanded="true" signature="3308:3491" ph="/// Impl�mentation possible de la recherche locale na�ve ... " />
+            <marker date="1523818228075" expanded="true" signature="3533:6371" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="3637:3725" ph="/* G�n�re une solution initiale au hazard (ici une s�quence ... */" />
+            <marker date="1523818228075" expanded="true" signature="3793:3990" ph="/* R�cup�re le score de la solution initiale ... */" />
+            <marker date="1523818228075" expanded="true" signature="4165:4290" ph="/* Nous r�cup�rons l'erreur minimum atteignable ... */" />
+            <marker date="1523818228075" expanded="true" signature="4598:6074" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="4621:4776" ph="/* On obtient une copie de la solution courante ... */" />
+            <marker date="1523818228075" expanded="true" signature="4851:4930" ph="/* On proc�de � une petite modification de la solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="4993:5202" ph="/* R�cup�re le score de la nouvelle solution ... */" />
+            <marker date="1523818228075" expanded="true" signature="5394:5536" ph="/* On affiche pour des raisons de Debug et de suivi ... */" />
+            <marker date="1523818228075" expanded="true" signature="5685:5907" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6476:7422" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6824:7088" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="6946:7078" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7518:7572" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7692:7746" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="7858:10067" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8378:8509" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="8696:8933" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9507:9687" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="9607:9677" ph="/* uncomment when implemented inside a while(true) ... */" />
+            <marker date="1523818228075" expanded="true" signature="9889:9982" ph="/* todo generate cross population ... */" />
+            <marker date="1523818228075" expanded="true" signature="10073:10286" ph="/// Exemple d'erreur minimum (pas forc�ment toujours juste) renvoyant ... " />
+            <marker date="1523818228075" expanded="true" signature="10308:10525" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="10531:12362" ph="/// Exemple d'oracle nous renvoyant un score que l'on essaye de minimiser ... " />
+            <marker date="1523818228075" expanded="true" signature="12423:13887" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="12764:12846" ph="/* On lance la simulation en sp�cifiant ... */" />
+            <marker date="1523818228075" expanded="true" signature="12987:13086" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="13096:13307" ph="/* Calcule la distance de Manhattan entre la case d'arriv�e et la case finale de ... */" />
+            <marker date="1523818228075" expanded="true" signature="13599:13675" ph="/* Debug.Log(player.FoundGoal); ... */" />
+            <marker date="1523818228075" expanded="true" signature="13893:14125" ph="/// Execute un changement al�atoire sur une solution ... " />
+            <marker date="1523818228075" expanded="true" signature="14188:14287" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14293:14536" ph="/// Fonction utilitaire ayant pour but de copier ... " />
+            <marker date="1523818228075" expanded="true" signature="14603:15099" ph="{...}" />
+            <marker date="1523818228075" expanded="true" signature="14618:14734" ph="/* Initialisation de la nouvelle s�quence d'action ... */" />
+            <marker date="1523818228075" expanded="true" signature="14809:14894" ph="/* Pour chaque action de la s�quence originale, ... */" />
+            <marker date="1523818228075" expanded="true" signature="14947:15029" ph="{...}" />
           </folding>
         </state>
       </provider>
