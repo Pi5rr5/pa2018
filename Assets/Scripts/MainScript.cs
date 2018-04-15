@@ -225,8 +225,64 @@ public class MainScript : MonoBehaviour
     // Coroutine � utiliser pour impl�menter un algorithme g�n�tique
     public IEnumerator GeneticAlgorithm()
     {
-        //TODO
-        yield return null;
+        _isRunning = true;
+        
+        var popSize = 100;
+        var breedersPercentage = 0.2f;
+        var breedersCount = (int) Mathf.Floor(popSize * breedersPercentage);
+        var mutationRate = 0.1f;
+        var generationID = 0;
+        var minError = GetMinError();
+        // population initialisation
+        Debug.Log("first population initialisation");
+        generationID++;
+        List<PathSolutionScript> population = new List<PathSolutionScript>();
+        for(var i = 0; i < popSize; i++)
+        {
+            int pathSize = Random.Range(0, 123);
+            population.Add(new PathSolutionScript(pathSize));
+        }
+        
+        Debug.Log("start population evaluation");
+        var evaluatedPopulation = new Dictionary<PathSolutionScript,float> (popSize);
+        for(var i = 0; i < popSize; i++) {
+            var scoreEnumerator = GetError(population[i]);
+            yield return StartCoroutine(scoreEnumerator);
+            float error = scoreEnumerator.Current;
+            evaluatedPopulation.Add(population[i],error);
+        }
+        Debug.Log("evaluation ended !");
+        
+        // split selected individu
+        Debug.Log("Apply selection");
+        var breeders =
+            evaluatedPopulation
+                .OrderBy(kv => kv.Value)
+                .Take(breedersCount)
+                .Select(kv => kv.Key)
+                .ToArray();
+        
+        //check if a child is the solution
+        var newScoreEnumerator = GetError(breeders[0]);
+        yield return StartCoroutine(newScoreEnumerator);
+        float newError = newScoreEnumerator.Current;
+        if (newError <= minError)
+        {
+            Debug.Log("SOLUTION FOUND IN GENERATION "+ generationID +"!!!");
+            //uncomment when implemented inside a while(true)
+            //break;
+        }
+        Debug.Log("Best solution: "+newError+" found in generation: "+ generationID);
+        Debug.Log("selected population size: "+breeders.Length +" at generation: "+generationID);
+        
+        //todo generate cross population
+        
+        //todo apply mutation on part of population
+        
+        _isRunning = false;
+        
+        
+        yield return 0;
     }
 
     /// <summary>
@@ -278,7 +334,7 @@ public class MainScript : MonoBehaviour
         var player = PlayerScript.CreatePlayer();
 
         // Pour pouvoir visualiser la simulation (moins rapide)
-        player.RunWithoutSimulation = false;
+        player.RunWithoutSimulation = true;
 
         // On lance la simulation en sp�cifiant
         // la s�quence d'action � ex�cuter
@@ -299,7 +355,7 @@ public class MainScript : MonoBehaviour
             * (player.FoundGoal ? 0 : 100) +
             player.PerformedActionsNumber;
 
-        Debug.Log(player.FoundGoal);
+        //Debug.Log(player.FoundGoal);
 
         // D�truit  l'objet de la simulation
         Destroy(player.gameObject);
