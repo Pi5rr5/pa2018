@@ -37,7 +37,7 @@ public class MainScript : MonoBehaviour
             if (!_isRunning)
             {
                 // D�marrage de la recherche locale na�ve en pseudo asynchrone
-                StartCoroutine("NaiveLocalSearch");
+                StartCoroutine(nameof(NaiveLocalSearch));
             }
         }
 
@@ -48,7 +48,7 @@ public class MainScript : MonoBehaviour
             if (!_isRunning)
             {
                 // D�marrage du recuit simul� en pseudo asynchrone
-                StartCoroutine("SimulatedAnnealing");
+                StartCoroutine(nameof(SimulatedAnnealing));
             }
         }
 
@@ -59,7 +59,7 @@ public class MainScript : MonoBehaviour
             if (!_isRunning)
             {
                 // D�marrage de l'algorithme g�n�tique en pseudo asynchrone
-                StartCoroutine("GeneticAlgorithm");
+                StartCoroutine(nameof(GeneticAlgorithm));
             }
         }
 
@@ -70,7 +70,7 @@ public class MainScript : MonoBehaviour
             if (!_isRunning)
             {
                 // D�marrage de l'algorithme de Djikstra en pseudo asynchrone
-                StartCoroutine("Djikstra");
+                StartCoroutine(nameof(Djikstra));
             }
         }
 
@@ -81,7 +81,7 @@ public class MainScript : MonoBehaviour
             if (!_isRunning)
             {
                 // D�marrage de l'algorithme A* en pseudo asynchrone
-                StartCoroutine("AStar");
+                StartCoroutine(nameof(AStar));
             }
         }
 
@@ -227,62 +227,112 @@ public class MainScript : MonoBehaviour
     {
         _isRunning = true;
         
-        var popSize = 100;
-        var breedersPercentage = 0.2f;
+        const int popSize = 200;
+        const float breedersPercentage = 0.2f;
         var breedersCount = (int) Mathf.Floor(popSize * breedersPercentage);
         var mutationRate = 0.1f;
-        var generationID = 0;
+        var generationId = 0;
         var minError = GetMinError();
-        // population initialisation
+        
+        // first population initialisation
         Debug.Log("first population initialisation");
-        generationID++;
-        List<PathSolutionScript> population = new List<PathSolutionScript>();
-        for(var i = 0; i < popSize; i++)
+        var population = new List<PathSolutionScript>();
+        for (var i = 0; i < popSize; i++)
         {
-            int pathSize = Random.Range(0, 123);
+            var pathSize = Random.Range(0, 123);
             population.Add(new PathSolutionScript(pathSize));
         }
         
-        Debug.Log("start population evaluation");
-        var evaluatedPopulation = new Dictionary<PathSolutionScript,float> (popSize);
-        for(var i = 0; i < popSize; i++) {
-            var scoreEnumerator = GetError(population[i]);
-            yield return StartCoroutine(scoreEnumerator);
-            float error = scoreEnumerator.Current;
-            evaluatedPopulation.Add(population[i],error);
-        }
-        Debug.Log("evaluation ended !");
-        
-        // split selected individu
-        Debug.Log("Apply selection");
-        var breeders =
-            evaluatedPopulation
-                .OrderBy(kv => kv.Value)
-                .Take(breedersCount)
-                .Select(kv => kv.Key)
-                .ToArray();
-        
-        //check if a child is the solution
-        var newScoreEnumerator = GetError(breeders[0]);
-        yield return StartCoroutine(newScoreEnumerator);
-        float newError = newScoreEnumerator.Current;
-        if (newError <= minError)
+        while (true)
         {
-            Debug.Log("SOLUTION FOUND IN GENERATION "+ generationID +"!!!");
-            //uncomment when implemented inside a while(true)
-            //break;
+            generationId++;
+            Debug.Log("start population evaluation population n°"+generationId);
+            var evaluatedPopulation = new Dictionary<PathSolutionScript, float>(popSize);
+            for (var i = 0; i < popSize; i++)
+            {
+                var scoreEnumerator = GetError(population[i]);
+                yield return StartCoroutine(scoreEnumerator);
+                var error = scoreEnumerator.Current;
+                evaluatedPopulation.Add(population[i], error);
+            }
+
+            Debug.Log("evaluation ended !");
+
+            // split selected individu
+            Debug.Log("Apply selection");
+            var breeders =
+                evaluatedPopulation
+                    .OrderBy(kv => kv.Value)
+                    .Take(breedersCount)
+                    .Select(kv => kv.Key)
+                    .ToArray();
+
+            //check if a child is the solution
+            var newScoreEnumerator = GetError(breeders[0]);
+            yield return StartCoroutine(newScoreEnumerator);
+            var newError = newScoreEnumerator.Current;
+            if (newError <= minError)
+            {
+                Debug.Log("<color=green>SOLUTION FOUND IN GENERATION " + generationId + "!!!</color>");
+                break;
+            }
+
+            Debug.Log("<color=blue>Best solution: " + newError + " found in generation: " + generationId + "</color>");
+            Debug.Log("selected population size: " + breeders.Length + " at generation: " + generationId);
+
+            //generate cross population
+            var newPop = new List<PathSolutionScript>();
+            for (var i = 0; i < popSize; i++)
+            {
+                //select 2 random parents
+                var p1 = breeders[Random.Range(0, breeders.Length)];
+                var p2 = breeders[Random.Range(0, breeders.Length)];
+
+                var child = CrossOver(p1, p2);
+                newPop.Add(child);
+            }
+
+            foreach (var individu in newPop)
+            {
+                var randomValue = Random.Range(0f,1f);
+                if(randomValue < mutationRate) {
+                    individu.Actions[(int)Random.Range(0, individu.Actions.Length)] = new ActionSolutionScript();
+                }
+            }
+            
+            population = newPop;
+            
+            //todo apply mutation on part of population
+
+            yield return null;
         }
-        Debug.Log("Best solution: "+newError+" found in generation: "+ generationID);
-        Debug.Log("selected population size: "+breeders.Length +" at generation: "+generationID);
-        
-        //todo generate cross population
-        
-        //todo apply mutation on part of population
-        
+
         _isRunning = false;
-        
-        
-        yield return 0;
+    }
+
+    private static PathSolutionScript CrossOver(PathSolutionScript p1, PathSolutionScript p2)
+    {
+        var child = p1.Actions.Length > p2.Actions.Length ? new PathSolutionScript(p1.Actions.Length) : new PathSolutionScript(p2.Actions.Length);
+        for (var i = 0; i < child.Actions.Length; i++)
+        {
+            if (i < p1.Actions.Length && i % 2 == 0)
+            {
+                child.Actions[i] = p1.Actions[i];
+            }
+            else if (i < p2.Actions.Length && i % 2 != 0)
+            {
+                child.Actions[i] = p2.Actions[i];
+            }
+            else if (i > p1.Actions.Length)
+            {
+                child.Actions[i] = p2.Actions[i];
+            }
+            else if (i > p2.Actions.Length)
+            {
+                child.Actions[i] = p1.Actions[i];
+            }
+        }
+        return child;
     }
 
     /// <summary>
