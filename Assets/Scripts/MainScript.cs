@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// Classe principale � utiliser pour impl�menter vos algorithmes
@@ -180,16 +181,24 @@ public class MainScript : MonoBehaviour
         // On affiche le nombre d'it�rations n�cessaire � l'algorithme pour trouver la solution
         Debug.Log("CONGRATULATIONS !!! Solution Found in " + iterations + " iterations !");
     }
+    
+    public struct currentNode  
+    {  
+        public int XPos;  
+        public int YPos;  
+    }  
 
-    // Coroutine � utiliser pour impl�menter l'algorithme de Djikstra
     public IEnumerator Djikstra()
     {
-        // R�cup�ration de l'environnement sous forme de matrice
+        // Recovering the environment as a matrix
         var matrix = MatrixFromRaycast.CreateMatrixFromRayCast();
 
+        /*
+        // Convert as boolean grid
+        // true => wall || explored
+        // false => unknow
+        */
         bool[][] booleanGrid = new bool[matrix.Length][];
-
-        // Conversion de la grille propos�e par le probl�me en grille bool�enne (case vide / obstacle)
         for (int i = 0; i < matrix.Length; i++)
         {
             booleanGrid[i] = new bool[matrix[i].Length];
@@ -198,14 +207,90 @@ public class MainScript : MonoBehaviour
                 booleanGrid[i][j] = (matrix[i][j] == LayerMask.NameToLayer("Obstacle")) ? true : false;
             }
         }
+        
+        //Label all the nodes with an infinite score
+        int[][] Grid = new int[matrix.Length][];
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            Grid[i] = new int[matrix[i].Length];
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                if (matrix[i][j] == LayerMask.NameToLayer("Obstacle"))
+                {
+                    Grid[i][j] = int.MinValue;
+                }
+                else
+                {
+                    Grid[i][j] = int.MaxValue;
+                }
+            }
+        }
 
         // R�cup�ration des positions de d�part et d'arriv�e
         var startPosX = PlayerScript.StartXPositionInMatrix;
         var startPosY = PlayerScript.StartYPositionInMatrix;
         var endPosX = PlayerScript.GoalXPositionInMatrix;
         var endPosY = PlayerScript.GoalYPositionInMatrix;
+        
+        //init start pos at 0
+        Grid[startPosX][startPosY] = 0;
+        booleanGrid[startPosX][startPosY] = true;
 
+        //define move cost
+        var moveCost = 1;
+        
+        //define the current case
+        var currentPos = new currentNode
+        {
+            XPos = startPosX,
+            YPos = startPosY
+        };
+        
+        FindNeighbourNode(Grid, currentPos, moveCost);
+        MoveToNextNode(Grid, booleanGrid, currentPos);
+        if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
+        {
+            //find final node
+            //go back to found optimal path
+        }
+        
+        moveCost++;
+        
         yield return null;
+    }
+
+    //find and init Neighbour Node if != Obstacle
+    private static void FindNeighbourNode(int[][] grid, currentNode currentPos, int moveCost)
+    {
+        if (grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
+            grid[currentPos.XPos + 1][currentPos.YPos] = moveCost;
+        
+        if (grid[currentPos.XPos - 1][currentPos.YPos] == int.MaxValue)
+            grid[currentPos.XPos - 1][currentPos.YPos] = moveCost;
+        
+        if (grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
+            grid[currentPos.XPos][currentPos.YPos + 1] = moveCost;
+        
+        if (grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
+            grid[currentPos.XPos][currentPos.YPos - 1] = moveCost;
+    }
+    
+    private static void MoveToNextNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos)
+    {
+        var currentPosValue = grid[currentPos.XPos][currentPos.YPos];
+        for (int i = 0; i < grid.Length; i++)
+        {
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] < currentPosValue && !exploredGrid[i][j])
+                {
+                    currentPos.XPos = i;
+                    currentPos.YPos = j;
+                    exploredGrid[i][j] = true;
+                    return;
+                }   
+            }
+        }
     }
 
     // Coroutine � utiliser pour impl�menter l'algorithme d' A*
