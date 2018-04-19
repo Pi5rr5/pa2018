@@ -301,9 +301,6 @@ public class MainScript : MonoBehaviour
             }
             
             population = newPop;
-            
-            //todo apply mutation on part of population
-
             yield return null;
         }
 
