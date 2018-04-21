@@ -226,16 +226,16 @@ public class MainScript : MonoBehaviour
             }
         }
 
-        // R�cup�ration des positions de d�part et d'arriv�e
+        // get position
         var startPosX = PlayerScript.StartXPositionInMatrix;
         var startPosY = PlayerScript.StartYPositionInMatrix;
         var endPosX = PlayerScript.GoalXPositionInMatrix;
         var endPosY = PlayerScript.GoalYPositionInMatrix;
         
-        //init start pos at 0
+        // init start pos at 0
         Grid[startPosX][startPosY] = 0;
         booleanGrid[startPosX][startPosY] = true;
-
+        
         //define move cost
         var moveCost = 1;
         
@@ -245,52 +245,63 @@ public class MainScript : MonoBehaviour
             XPos = startPosX,
             YPos = startPosY
         };
-        
-        FindNeighbourNode(Grid, currentPos, moveCost);
-        MoveToNextNode(Grid, booleanGrid, currentPos);
-        if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
+
+        var it = 0;
+        Debug.Log("start pos: ("+ currentPos.XPos+" : "+currentPos.YPos+")");
+        while (true)
         {
-            //find final node
-            //go back to found optimal path
+            FindNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
+            currentPos = MoveToNextNode(Grid, booleanGrid, currentPos, moveCost);
+            if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
+            {
+                Debug.Log("Solution found");
+                break;
+            }
         }
-        
-        moveCost++;
-        
+
         yield return null;
     }
 
     //find and init Neighbour Node if != Obstacle
-    private static void FindNeighbourNode(int[][] grid, currentNode currentPos, int moveCost)
+    private static void FindNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
-        if (grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
-            grid[currentPos.XPos + 1][currentPos.YPos] = moveCost;
+        var nextCost = grid[currentPos.XPos][currentPos.YPos] + moveCost;
         
-        if (grid[currentPos.XPos - 1][currentPos.YPos] == int.MaxValue)
-            grid[currentPos.XPos - 1][currentPos.YPos] = moveCost;
+        if (!exploredGrid[currentPos.XPos + 1][currentPos.YPos])
+            grid[currentPos.XPos + 1][currentPos.YPos] = nextCost;
         
-        if (grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
-            grid[currentPos.XPos][currentPos.YPos + 1] = moveCost;
+        if (!exploredGrid[currentPos.XPos - 1][currentPos.YPos])
+            grid[currentPos.XPos -1 ][currentPos.YPos] = nextCost;
         
-        if (grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
-            grid[currentPos.XPos][currentPos.YPos - 1] = moveCost;
+        if (!exploredGrid[currentPos.XPos][currentPos.YPos + 1])
+            grid[currentPos.XPos][currentPos.YPos + 1] = nextCost;
+        
+        if (!exploredGrid[currentPos.XPos][currentPos.YPos - 1])
+            grid[currentPos.XPos + 1][currentPos.YPos - 1] = nextCost;
     }
     
-    private static void MoveToNextNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos)
+    private static currentNode MoveToNextNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
         var currentPosValue = grid[currentPos.XPos][currentPos.YPos];
+        var minNode = grid[currentPos.XPos][currentPos.YPos] + moveCost;
+        var xMin = 0;
+        var yMin = 0;
         for (int i = 0; i < grid.Length; i++)
         {
             for (int j = 0; j < grid[i].Length; j++)
             {
-                if (grid[i][j] < currentPosValue && !exploredGrid[i][j])
+                if (grid[i][j] <= minNode && !exploredGrid[i][j])
                 {
-                    currentPos.XPos = i;
-                    currentPos.YPos = j;
-                    exploredGrid[i][j] = true;
-                    return;
+                    minNode = grid[i][j];
+                    xMin = i;
+                    yMin = j;
                 }   
             }
         }
+        currentPos.XPos = xMin;
+        currentPos.YPos = yMin;
+        exploredGrid[xMin][yMin] = true;
+        return currentPos;
     }
 
     // Coroutine � utiliser pour impl�menter l'algorithme d' A*
