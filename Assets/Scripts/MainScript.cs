@@ -237,7 +237,7 @@ public class MainScript : MonoBehaviour
         booleanGrid[startPosX][startPosY] = true;
         
         //define move cost
-        var moveCost = 1;
+        const int moveCost = 1;
         
         //define the current case
         var currentPos = new currentNode
@@ -247,7 +247,6 @@ public class MainScript : MonoBehaviour
         };
 
         var it = 0;
-        Debug.Log("start pos: ("+ currentPos.XPos+" : "+currentPos.YPos+")");
         while (true)
         {
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
@@ -267,17 +266,16 @@ public class MainScript : MonoBehaviour
     private static void FindNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
         var nextCost = grid[currentPos.XPos][currentPos.YPos] + moveCost;
-        
-        if (!exploredGrid[currentPos.XPos + 1][currentPos.YPos])
+        if (currentPos.XPos + 1 < grid.Length-1 && !exploredGrid[currentPos.XPos + 1][currentPos.YPos])
             grid[currentPos.XPos + 1][currentPos.YPos] = nextCost;
         
-        if (!exploredGrid[currentPos.XPos - 1][currentPos.YPos])
+        if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos])
             grid[currentPos.XPos -1 ][currentPos.YPos] = nextCost;
         
-        if (!exploredGrid[currentPos.XPos][currentPos.YPos + 1])
+        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length-1 && !exploredGrid[currentPos.XPos][currentPos.YPos + 1])
             grid[currentPos.XPos][currentPos.YPos + 1] = nextCost;
         
-        if (!exploredGrid[currentPos.XPos][currentPos.YPos - 1])
+        if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1])
             grid[currentPos.XPos + 1][currentPos.YPos - 1] = nextCost;
     }
     
