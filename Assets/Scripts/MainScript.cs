@@ -250,13 +250,14 @@ public class MainScript : MonoBehaviour
         Debug.Log("start pos: ("+ currentPos.XPos+" : "+currentPos.YPos+")");
         while (true)
         {
-            FindNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
-            currentPos = MoveToNextNode(Grid, booleanGrid, currentPos, moveCost);
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
-                Debug.Log("Solution found");
+                Debug.Log("Solution found in "+it+" iterations");
                 break;
             }
+            FindNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
+            currentPos = MoveToNextNode(Grid, booleanGrid, currentPos, moveCost);
+            it++;
         }
 
         yield return null;
