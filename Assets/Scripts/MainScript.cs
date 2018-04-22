@@ -267,22 +267,21 @@ public class MainScript : MonoBehaviour
     private static void FindNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
         var nextCost = grid[currentPos.XPos][currentPos.YPos] + moveCost;
-        if (currentPos.XPos + 1 < grid.Length-1 && !exploredGrid[currentPos.XPos + 1][currentPos.YPos])
+        if (currentPos.XPos + 1 < grid.Length-1 && !exploredGrid[currentPos.XPos + 1][currentPos.YPos] && grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
             grid[currentPos.XPos + 1][currentPos.YPos] = nextCost;
         
-        if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos])
+        if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos] && grid[currentPos.XPos - 1][currentPos.YPos] == int.MaxValue)
             grid[currentPos.XPos -1 ][currentPos.YPos] = nextCost;
         
-        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length-1 && !exploredGrid[currentPos.XPos][currentPos.YPos + 1])
+        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length-1 && !exploredGrid[currentPos.XPos][currentPos.YPos + 1] && grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
             grid[currentPos.XPos][currentPos.YPos + 1] = nextCost;
         
-        if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1])
+        if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1] && grid[currentPos.XPos][currentPos.YPos - 1] == int.MaxValue)
             grid[currentPos.XPos + 1][currentPos.YPos - 1] = nextCost;
     }
     
     private static currentNode MoveToNextNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
-        var currentPosValue = grid[currentPos.XPos][currentPos.YPos];
         var minNode = grid[currentPos.XPos][currentPos.YPos] + moveCost;
         var xMin = 0;
         var yMin = 0;
