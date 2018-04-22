@@ -252,6 +252,7 @@ public class MainScript : MonoBehaviour
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
                 Debug.Log("Solution found in "+it+" iterations");
+                //todo return the optimal path
                 break;
             }
             FindNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
