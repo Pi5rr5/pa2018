@@ -1,11 +1,17 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
+    
+    public GameObject CubeOptimalPath;
+    public GameObject CubeVisitedNode;
+    public GameObject CubeCurrentNode;
 
     private bool _isRunning = false;
 
@@ -19,6 +25,7 @@ public class MainScript : MonoBehaviour
         {
             if (!_isRunning)
             {
+                DetroyClone();
                 StartCoroutine(nameof(NaiveLocalSearch));
             }
         }
@@ -27,6 +34,7 @@ public class MainScript : MonoBehaviour
         {
             if (!_isRunning)
             {
+                DetroyClone();
                 StartCoroutine(nameof(SimulatedAnnealing));
             }
         }
@@ -35,6 +43,7 @@ public class MainScript : MonoBehaviour
         {
             if (!_isRunning)
             {
+                DetroyClone();
                 StartCoroutine(nameof(GeneticAlgorithm));
             }
         }
@@ -43,6 +52,7 @@ public class MainScript : MonoBehaviour
         {
             if (!_isRunning)
             {
+                DetroyClone();
                 StartCoroutine(nameof(Djikstra));
             }
         }
@@ -51,6 +61,7 @@ public class MainScript : MonoBehaviour
         {
             if (!_isRunning)
             {
+                DetroyClone();
                 StartCoroutine(nameof(AStar));
             }
         }
@@ -61,6 +72,15 @@ public class MainScript : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
+    }
+
+    private static void DetroyClone()
+    {
+        var clones = GameObject.FindGameObjectsWithTag ("clone");
+        foreach (var clone in clones)
+        {
+            Destroy(clone);
+        }
     }
 
     public IEnumerator NaiveLocalSearch()
@@ -100,7 +120,7 @@ public class MainScript : MonoBehaviour
 
             iterations++;
 
-            yield return 0;
+            yield return null;
         }
 
         _isRunning = false;
@@ -116,6 +136,8 @@ public class MainScript : MonoBehaviour
 
     public IEnumerator Djikstra()
     {
+        _isRunning = true;
+        
         // Recovering the environment as a matrix
         var matrix = MatrixFromRaycast.CreateMatrixFromRayCast();
 
@@ -141,14 +163,7 @@ public class MainScript : MonoBehaviour
             Grid[i] = new int[matrix[i].Length];
             for (int j = 0; j < matrix[i].Length; j++)
             {
-                if (matrix[i][j] == LayerMask.NameToLayer("Obstacle"))
-                {
-                    Grid[i][j] = int.MinValue;
-                }
-                else
-                {
-                    Grid[i][j] = int.MaxValue;
-                }
+                Grid[i][j] = int.MaxValue;
             }
         }
 
@@ -175,6 +190,7 @@ public class MainScript : MonoBehaviour
         var it = 0;
         while (true)
         {
+            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, 0, currentPos.YPos - 25), Quaternion.identity);
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
                 Debug.Log("Solution found in "+it+" iterations");
@@ -184,8 +200,9 @@ public class MainScript : MonoBehaviour
             MarkNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
             currentPos = MoveToNextNode(Grid, booleanGrid, currentPos, moveCost);
             it++;
+            yield return null;
         }
-
+        _isRunning = false;
         yield return null;
     }
 
@@ -193,22 +210,31 @@ public class MainScript : MonoBehaviour
     private static void MarkNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
         var nextCost = grid[currentPos.XPos][currentPos.YPos] + moveCost;
-        if (currentPos.XPos + 1 < grid.Length && !exploredGrid[currentPos.XPos + 1][currentPos.YPos] && grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
+        if (currentPos.XPos + 1 < grid.Length && !exploredGrid[currentPos.XPos + 1][currentPos.YPos])
+        {
             grid[currentPos.XPos + 1][currentPos.YPos] = nextCost;
-        
-        if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos] && grid[currentPos.XPos - 1][currentPos.YPos] == int.MaxValue)
+        }
+
+        if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos])
+        {
             grid[currentPos.XPos -1 ][currentPos.YPos] = nextCost;
-        
-        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length && !exploredGrid[currentPos.XPos][currentPos.YPos + 1] && grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
+        }
+
+
+        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length && !exploredGrid[currentPos.XPos][currentPos.YPos + 1])
+        {
             grid[currentPos.XPos][currentPos.YPos + 1] = nextCost;
-        
-        if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1] && grid[currentPos.XPos][currentPos.YPos - 1] == int.MaxValue)
-            grid[currentPos.XPos + 1][currentPos.YPos - 1] = nextCost;
+        }
+
+        if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1])
+        {
+            grid[currentPos.XPos][currentPos.YPos - 1] = nextCost;
+        }
     }
     
     private static currentNode MoveToNextNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
-        var minNode = grid[currentPos.XPos][currentPos.YPos] + moveCost;
+        var minNode = grid[0][0];
         var xMin = 0;
         var yMin = 0;
         for (int i = 0; i < grid.Length; i++)
@@ -231,6 +257,8 @@ public class MainScript : MonoBehaviour
 
     public IEnumerator AStar()
     {
+        _isRunning = true;
+        
         // Recovering the environment as a matrix
         var matrix = MatrixFromRaycast.CreateMatrixFromRayCast();
         
@@ -294,6 +322,7 @@ public class MainScript : MonoBehaviour
 
         while (true)
         {
+            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, 0, currentPos.YPos - 25), Quaternion.identity);
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
                 Debug.Log("Solution found in "+it+" iterations");
@@ -304,8 +333,9 @@ public class MainScript : MonoBehaviour
             currentPos = MoveToNextNodeWithHeuristic(Grid, HeuristicGrid, ExploredGrid, currentPos);
             
             it++;
+            yield return null;
         }
-        
+        _isRunning = false;
         yield return null;
     }
 
@@ -382,7 +412,7 @@ public class MainScript : MonoBehaviour
             {
                 stagnation = 0;
             }
-            if(stagnation > 200 ) {
+            if(stagnation > 200) {
                 temperature = 6f;
                 stagnation = 0;
             }
@@ -409,7 +439,7 @@ public class MainScript : MonoBehaviour
     {
         _isRunning = true;
         
-        const int popSize = 200;
+        const int popSize = 100;
         const float breedersPercentage = 0.2f;
         var breedersCount = (int) Mathf.Floor(popSize * breedersPercentage);
         var mutationRate = 0.1f;
