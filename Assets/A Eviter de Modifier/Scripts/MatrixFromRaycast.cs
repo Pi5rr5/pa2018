@@ -7,13 +7,13 @@ public class MatrixFromRaycast {
     static public int[][] CreateMatrixFromRayCast()
     {
         //size 51 to take last column
-        int[][] matrix = new int[51][];
+        int[][] matrix = new int[50][];
 
-        for (int i = 0; i < 51; i++)
+        for (int i = 0; i < 50; i++)
         {
             //size 51 to take last line
-            matrix[i] = new int[51];
-            for (int j = 0; j < 51; j++)
+            matrix[i] = new int[50];
+            for (int j = 0; j < 50; j++)
             {
                 var ray = new Ray(new Vector3(i - 25, 5, j - 25), Vector3.down);RaycastHit rch;
                 if (Physics.Raycast(ray, out rch, 10f))

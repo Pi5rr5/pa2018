@@ -382,7 +382,7 @@ public class MainScript : MonoBehaviour
             {
                 stagnation = 0;
             }
-            if(stagnation > 200) {
+            if(stagnation > 200 ) {
                 temperature = 6f;
                 stagnation = 0;
             }
@@ -478,7 +478,7 @@ public class MainScript : MonoBehaviour
             {
                 var randomValue = Random.Range(0f,1f);
                 if(randomValue < mutationRate) {
-                    individu.Actions[(int)Random.Range(0, individu.Actions.Length)] = new ActionSolutionScript();
+                    RandomChangeInSolution(individu);
                 }
             }
             
