@@ -4,181 +4,107 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-/// <summary>
-/// Classe principale � utiliser pour impl�menter vos algorithmes
-/// Si vous souhaitez utiliser plusieurs scripts (1 par algorithme), 
-/// vous le pouvez aussi.
-/// </summary>
 public class MainScript : MonoBehaviour
 {
 
-    /// <summary>
-    /// Indique si un algorithme est en cours d'ex�cution
-    /// </summary>
     private bool _isRunning = false;
 
-    /// <summary>
-    /// Indique si une evaluation de solution est en cours
-    /// </summary>
     private bool _inSimulation = false;
 
-    /// <summary>
-    /// M�thode utilis�e pour g�rer les informations et 
-    /// boutons de l'interface utilisateur
-    /// </summary>
     public void OnGUI()
     {
-        // D�marrage d'une liste de composants visuels verticale
         GUILayout.BeginVertical();
 
-        // Affiche un bouton permettant le lancement de la recherche locale na�ve
         if (GUILayout.Button("DEMARRAGE RECHERCHE LOCALE NAIVE"))
         {
-            // Le bouton est inactif si un algorithme est en cours d'ex�cution
             if (!_isRunning)
             {
-                // D�marrage de la recherche locale na�ve en pseudo asynchrone
                 StartCoroutine(nameof(NaiveLocalSearch));
             }
         }
 
-        // Affiche un bouton permettant le lancement de la recherche locale na�ve
         if (GUILayout.Button("DEMARRAGE RECUIT SIMULE"))
         {
-            // Le bouton est inactif si un algorithme est en cours d'ex�cution
             if (!_isRunning)
             {
-                // D�marrage du recuit simul� en pseudo asynchrone
                 StartCoroutine(nameof(SimulatedAnnealing));
             }
         }
 
-        // Affiche un bouton permettant le lancement de l'algorithme g�n�tique
         if (GUILayout.Button("DEMARRAGE ALGORITHME GENETIQUE"))
         {
-            // Le bouton est inactif si un algorithme est en cours d'ex�cution
             if (!_isRunning)
             {
-                // D�marrage de l'algorithme g�n�tique en pseudo asynchrone
                 StartCoroutine(nameof(GeneticAlgorithm));
             }
         }
 
-        // Affiche un bouton permettant le lancement de l'algorithme de Djikstra
         if (GUILayout.Button("DEMARRAGE DJIKSTRA"))
         {
-            // Le bouton est inactif si un algorithme est en cours d'ex�cution
             if (!_isRunning)
             {
-                // D�marrage de l'algorithme de Djikstra en pseudo asynchrone
                 StartCoroutine(nameof(Djikstra));
             }
         }
 
-        // Affiche un bouton permettant le lancement de l'algorithme A*
         if (GUILayout.Button("DEMARRAGE A*"))
         {
-            // Le bouton est inactif si un algorithme est en cours d'ex�cution
             if (!_isRunning)
             {
-                // D�marrage de l'algorithme A* en pseudo asynchrone
                 StartCoroutine(nameof(AStar));
             }
         }
 
-        // Fin de la liste de composants visuels verticale
         GUILayout.EndVertical();
     }
 
-    /// <summary>
-    /// Initialisation du script
-    /// </summary>
     void Start()
     {
-        // Pour faire en sorte que l'algorithme puisse continuer d'�tre actif m�me
-        // en t�che de fond.
         Application.runInBackground = true;
     }
 
-    /// <summary>
-    /// Impl�mentation possible de la recherche locale na�ve
-    /// sous forme de coroutine pour le mode pseudo asynchone
-    /// </summary>
-    /// <returns></returns>
     public IEnumerator NaiveLocalSearch()
     {
-        // Indique que l'algorithme est en cours d'ex�cution
         _isRunning = true;
 
-        // G�n�re une solution initiale au hazard (ici une s�quence
-        // de 42 mouvements)
         var currentSolution = new PathSolutionScript(42);
 
-        // R�cup�re le score de la solution initiale
-        // Sachant que l'�valuation peut n�cessiter une 
-        // simulation, pour pouvoir la visualiser nous
-        // avons recours � une coroutine
         var scoreEnumerator = GetError(currentSolution);
         yield return StartCoroutine(scoreEnumerator);
         float currentError = scoreEnumerator.Current;
 
-        // Nous r�cup�rons l'erreur minimum atteignable
-        // Ceci est optionnel et d�pendant de la fonction
-        // d'erreur
         var minimumError = GetMinError();
 
-        // Affichage de l'erreur initiale
         Debug.Log(currentError);
 
-        // Initialisation du nombre d'it�rations
         int iterations = 0;
 
-        // Tout pendant que l'erreur minimale n'est pas atteinte
         while (currentError != minimumError)
         {
-            // On obtient une copie de la solution courante
-            // pour ne pas la modifier dans le cas ou la modification
-            // ne soit pas conserv�e.
             var newsolution = CopySolution(currentSolution);
 
-            // On proc�de � une petite modification de la solution
-            // courante.
             RandomChangeInSolution(newsolution);
 
-            // R�cup�re le score de la nouvelle solution
-            // Sachant que l'�valuation peut n�cessiter une 
-            // simulation, pour pouvoir la visualiser nous
-            // avons recours � une coroutine
             var newscoreEnumerator = GetError(newsolution);
             yield return StartCoroutine(newscoreEnumerator);
             float newError = newscoreEnumerator.Current;
 
-            // On affiche pour des raisons de Debug et de suivi
-            // la comparaison entre l'erreur courante et la
-            // nouvelle erreur
             Debug.Log(currentError + "   -   " + newError);
 
-            // Si la solution a �t� am�lior�e
             if (newError <= currentError)
             {
-                // On met � jour la solution courante
                 currentSolution = newsolution;
 
-                // On met � jour l'erreur courante
                 currentError = newError;
             }
 
-            // On incr�mente le nombre d'it�rations
             iterations++;
 
-            // On rend la main au moteur Unity3D
             yield return 0;
         }
 
-        // Fin de l'algorithme, on indique que son ex�cution est stopp�e
         _isRunning = false;
 
-        // On affiche le nombre d'it�rations n�cessaire � l'algorithme pour trouver la solution
         Debug.Log("CONGRATULATIONS !!! Solution Found in " + iterations + " iterations !");
     }
     
@@ -303,7 +229,6 @@ public class MainScript : MonoBehaviour
         return currentPos;
     }
 
-    // Coroutine � utiliser pour impl�menter l'algorithme d' A*
     public IEnumerator AStar()
     {
         // Recovering the environment as a matrix
@@ -413,7 +338,6 @@ public class MainScript : MonoBehaviour
                 Mathf.Abs(PlayerScript.GoalYPositionInMatrix - y)) * 100;
     }
 
-    // Coroutine � utiliser pour impl�menter l'algorithme du recuit simul�
     public IEnumerator SimulatedAnnealing()
     {
         _isRunning = true;
@@ -458,7 +382,7 @@ public class MainScript : MonoBehaviour
             {
                 stagnation = 0;
             }
-            if(stagnation > 2500) {
+            if(stagnation > 200) {
                 temperature = 6f;
                 stagnation = 0;
             }
@@ -481,7 +405,6 @@ public class MainScript : MonoBehaviour
         return Mathf.Exp((currentError - newError) / temperature);
     }
 
-    // Coroutine � utiliser pour impl�menter un algorithme g�n�tique
     public IEnumerator GeneticAlgorithm()
     {
         _isRunning = true;
