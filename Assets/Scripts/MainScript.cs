@@ -152,7 +152,7 @@ public class MainScript : MonoBehaviour
             booleanGrid[i] = new bool[matrix[i].Length];
             for (int j = 0; j < matrix[i].Length; j++)
             {
-                booleanGrid[i][j] = (matrix[i][j] == LayerMask.NameToLayer("Obstacle")) ? true : false;
+                booleanGrid[i][j] = (matrix[i][j] == LayerMask.NameToLayer("Obstacle"));
             }
         }
         
@@ -190,7 +190,7 @@ public class MainScript : MonoBehaviour
         var it = 0;
         while (true)
         {
-            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, 0, currentPos.YPos - 25), Quaternion.identity);
+            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, -0.9f, currentPos.YPos - 25), Quaternion.identity);
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
                 Debug.Log("Solution found in "+it+" iterations");
@@ -202,6 +202,7 @@ public class MainScript : MonoBehaviour
             it++;
             yield return null;
         }
+        
         _isRunning = false;
         yield return null;
     }
@@ -322,7 +323,7 @@ public class MainScript : MonoBehaviour
 
         while (true)
         {
-            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, 0, currentPos.YPos - 25), Quaternion.identity);
+            Instantiate(CubeCurrentNode, new Vector3(currentPos.XPos - 25, -0.9f, currentPos.YPos - 25), Quaternion.identity);
             if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
             {
                 Debug.Log("Solution found in "+it+" iterations");
