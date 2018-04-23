@@ -255,7 +255,7 @@ public class MainScript : MonoBehaviour
                 //todo return the optimal path
                 break;
             }
-            FindNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
+            MarkNeighbourNode(Grid, booleanGrid, currentPos, moveCost);
             currentPos = MoveToNextNode(Grid, booleanGrid, currentPos, moveCost);
             it++;
         }
@@ -263,17 +263,17 @@ public class MainScript : MonoBehaviour
         yield return null;
     }
 
-    //find and init Neighbour Node if != Obstacle
-    private static void FindNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
+    //find and mark Neighbour Node if != Obstacle
+    private static void MarkNeighbourNode(int[][] grid, bool[][] exploredGrid, currentNode currentPos, int moveCost)
     {
         var nextCost = grid[currentPos.XPos][currentPos.YPos] + moveCost;
-        if (currentPos.XPos + 1 < grid.Length-1 && !exploredGrid[currentPos.XPos + 1][currentPos.YPos] && grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
+        if (currentPos.XPos + 1 < grid.Length && !exploredGrid[currentPos.XPos + 1][currentPos.YPos] && grid[currentPos.XPos + 1][currentPos.YPos] == int.MaxValue)
             grid[currentPos.XPos + 1][currentPos.YPos] = nextCost;
         
         if (currentPos.XPos - 1 >= 0 && !exploredGrid[currentPos.XPos - 1][currentPos.YPos] && grid[currentPos.XPos - 1][currentPos.YPos] == int.MaxValue)
             grid[currentPos.XPos -1 ][currentPos.YPos] = nextCost;
         
-        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length-1 && !exploredGrid[currentPos.XPos][currentPos.YPos + 1] && grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
+        if (currentPos.YPos + 1 < grid[currentPos.XPos].Length && !exploredGrid[currentPos.XPos][currentPos.YPos + 1] && grid[currentPos.XPos][currentPos.YPos + 1] == int.MaxValue)
             grid[currentPos.XPos][currentPos.YPos + 1] = nextCost;
         
         if (currentPos.YPos - 1 >= 0 && !exploredGrid[currentPos.XPos][currentPos.YPos - 1] && grid[currentPos.XPos][currentPos.YPos - 1] == int.MaxValue)
@@ -306,8 +306,111 @@ public class MainScript : MonoBehaviour
     // Coroutine � utiliser pour impl�menter l'algorithme d' A*
     public IEnumerator AStar()
     {
-        //TODO
+        // Recovering the environment as a matrix
+        var matrix = MatrixFromRaycast.CreateMatrixFromRayCast();
+        
+        /*
+        // Convert as boolean grid
+        // true => wall || explored
+        // false => unknow
+        */
+        bool[][] ExploredGrid = new bool[matrix.Length][];
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            ExploredGrid[i] = new bool[matrix[i].Length];
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                ExploredGrid[i][j]  = (matrix[i][j] == LayerMask.NameToLayer("Obstacle")) ? true : false;
+            }
+        }
+        
+        //Label all the nodes with an infinite score
+        int[][] Grid = new int[matrix.Length][];
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            Grid[i] = new int[matrix[i].Length];
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                Grid[i][j] = int.MaxValue;
+            }
+        }
+
+        int[][] HeuristicGrid = new int[matrix.Length][];
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            HeuristicGrid[i] = new int[matrix[i].Length];
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                HeuristicGrid[i][j] = ManhattanScore(i, j);
+            }
+        }
+        
+        // get position
+        var startPosX = PlayerScript.StartXPositionInMatrix;
+        var startPosY = PlayerScript.StartYPositionInMatrix;
+        var endPosX = PlayerScript.GoalXPositionInMatrix;
+        var endPosY = PlayerScript.GoalYPositionInMatrix;
+        
+        // init start pos at 0
+        Grid[startPosX][startPosY] = 0;
+        ExploredGrid[startPosX][startPosY] = true;
+        
+        //define move cost
+        const int moveCost = 1;
+        
+        //define the current case
+        var currentPos = new currentNode
+        {
+            XPos = startPosX,
+            YPos = startPosY
+        };
+
+        var it = 0;
+
+        while (true)
+        {
+            if (currentPos.XPos == endPosX && currentPos.YPos == endPosY)
+            {
+                Debug.Log("Solution found in "+it+" iterations");
+                //todo return the optimal path
+                break;
+            }
+            MarkNeighbourNode(Grid, ExploredGrid, currentPos, moveCost);
+            currentPos = MoveToNextNodeWithHeuristic(Grid, HeuristicGrid, ExploredGrid, currentPos);
+            
+            it++;
+        }
+        
         yield return null;
+    }
+
+    private static currentNode MoveToNextNodeWithHeuristic(int[][] grid, int[][] heuristicGrid, bool[][] exploredGrid, currentNode currentPos)
+    {
+        var minNode = Mathf.Abs(grid[0][0] - heuristicGrid[0][0]);
+        var xMin = 0;
+        var yMin = 0;
+        for (var i = 0; i < grid.Length; i++)
+        {
+            for (var j = 0; j < grid[i].Length; j++)
+            {
+                if (Mathf.Abs(grid[i][j] - heuristicGrid[i][j]) < minNode && !exploredGrid[i][j] && grid[i][j] != int.MaxValue)
+                {
+                    minNode = Mathf.Abs(grid[i][j] - heuristicGrid[i][j]);
+                    xMin = i;
+                    yMin = j;
+                }   
+            }
+        }
+        currentPos.XPos = xMin;
+        currentPos.YPos = yMin;
+        exploredGrid[xMin][yMin] = true;
+        return currentPos;
+    }
+    
+    private static int ManhattanScore(int x, int y)
+    {
+        return (Mathf.Abs(PlayerScript.GoalXPositionInMatrix - x) + 
+                Mathf.Abs(PlayerScript.GoalYPositionInMatrix - y)) * 100;
     }
 
     // Coroutine � utiliser pour impl�menter l'algorithme du recuit simul�
@@ -434,7 +537,7 @@ public class MainScript : MonoBehaviour
     /// <returns></returns>
     int GetMinError()
     {
-        return (int)(Mathf.Abs(PlayerScript.GoalXPositionInMatrix - PlayerScript.StartXPositionInMatrix) +
+        return (Mathf.Abs(PlayerScript.GoalXPositionInMatrix - PlayerScript.StartXPositionInMatrix) +
             Mathf.Abs(PlayerScript.GoalYPositionInMatrix - PlayerScript.StartYPositionInMatrix));
     }
 
