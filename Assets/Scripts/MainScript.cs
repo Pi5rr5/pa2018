@@ -134,7 +134,7 @@ public class MainScript : MonoBehaviour
         int iterations = 0;
 
         // Tout pendant que l'erreur minimale n'est pas atteinte
-        while (currentError != GetMinError())
+        while (currentError != minimumError)
         {
             // On obtient une copie de la solution courante
             // pour ne pas la modifier dans le cas ou la modification
@@ -416,8 +416,69 @@ public class MainScript : MonoBehaviour
     // Coroutine � utiliser pour impl�menter l'algorithme du recuit simul�
     public IEnumerator SimulatedAnnealing()
     {
-        //TODO
-        yield return null;
+        _isRunning = true;
+
+        var currentSolution = new PathSolutionScript(42);
+
+        var scoreEnumerator = GetError(currentSolution);
+        yield return StartCoroutine(scoreEnumerator);
+        
+        float currentError = scoreEnumerator.Current;
+        var temperature = 0f;
+        var stagnation = 0;
+
+        var minimumError = GetMinError();
+
+        Debug.Log(currentError);
+
+        int iterations = 0;
+
+        while (currentError != minimumError)
+        {
+            float oldError = currentError;
+            
+            var newsolution = CopySolution(currentSolution);
+            RandomChangeInSolution(newsolution);
+            var newscoreEnumerator = GetError(newsolution);
+            yield return StartCoroutine(newscoreEnumerator);
+            float newError = newscoreEnumerator.Current;
+
+            Debug.Log(currentError + "   -   " + newError);
+            var rdm = Random.Range(0f,1f);
+            if (rdm <= MetropolisCriterium(currentError,newError,temperature))
+            {
+                currentSolution = newsolution;
+                currentError = newError;
+            }
+            
+            if(oldError == currentError) {
+                stagnation++;
+            }
+            else
+            {
+                stagnation = 0;
+            }
+            if(stagnation > 2500) {
+                temperature = 6f;
+                stagnation = 0;
+            }
+            
+            temperature *= 0.9999f;
+            Debug.Log("Temperature: "+temperature+" Stagnation: "+stagnation);
+            iterations++;
+            yield return 0;
+        }
+
+        _isRunning = false;
+
+        Debug.Log("CONGRATULATIONS !!! Solution Found in " + iterations + " iterations !");
+    }
+    
+    float MetropolisCriterium(float currentError, float newError, float temperature) {
+        if(temperature <= 0) {
+            return currentError - newError >=0 ? 1f: 0f;
+        }
+        return Mathf.Exp((currentError - newError) / temperature);
     }
 
     // Coroutine � utiliser pour impl�menter un algorithme g�n�tique
