@@ -6,5 +6,5 @@
 * djikstra
 * A*
 
-![](rapport/djikstra.gif)
-![](rapport/astar.gif)
+<img src="rapport/djikstra.gif" width="250px">
+<img src="rapport/astar.gif" width="250px">
