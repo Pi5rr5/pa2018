@@ -6,5 +6,7 @@
 * djikstra
 * A*
 
+<center>
 <img src="rapport/djikstra.gif" width="250px">
 <img src="rapport/aStar.gif" width="250px">
+</center>
