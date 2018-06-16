@@ -1,8 +1,7 @@
-using System;
-using System.Runtime.InteropServices;
 using UnityEngine;
-using Random = UnityEngine.Random;
-using CSML;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
+
 
 public class LinearRegression : MonoBehaviour
 {
@@ -15,54 +14,55 @@ public class LinearRegression : MonoBehaviour
     private void Start()
     {
         
-        /*-------------------------------------unit test start---------------------------------------*/
-        var inputsTest = new Matrix("0.0; 1.0; 2.0");
-        var targetsTest = new Matrix("2.0; 5.0; 8.0");
+        //-------------------------------------unit test start---------------------------------------
+        Matrix<double> inputsTest = DenseMatrix.OfArray(new [,] { {0.0}, {1.0}, {2.0} });
+        Matrix<double> targetsTest = DenseMatrix.OfArray(new [,] { {2.0}, {5.0}, {8.0} });
+
         var modelTest = Train(inputsTest, targetsTest);
-        var testValue = new Matrix("4.0");
+        Matrix<double> testValue = DenseMatrix.OfArray(new [,] { {4.0} });
+
         var resultTest = Predict(modelTest, testValue);
         //unit test result
-        var unitTestResult = (float.Parse(resultTest[1].ToString()) == 14.0) ? "Success" : "Failure";
+        var unitTestResult = (resultTest.At(0, 0) == 14.0) ? "Success" : "Failure";
         Debug.Log("Unit test: " + unitTestResult + " !");
-        /*-------------------------------------------------------------------------------------------*/
+        //-------------------------------------------------------------------------------------------
         
-        var inputs = new Matrix();
-        var targets = new Matrix();
-        
+        var inputs = Matrix<double>.Build.Dense(_dots.Length, 2, 0.0);
+        var targets = Matrix<double>.Build.Dense(_dots.Length, 1, 0.0);
+
         for (var i = 0; i < _dots.Length; i++)
         {
-            /*init inputs Matrix*/
-            var tmp = _dots[i].position.x + "," + _dots[i].position.z;
-            inputs.InsertRow(new Matrix(tmp), i + 1);
-            /*init targets Matrix*/
-            targets.InsertRow(new Matrix(_dots[i].position.y.ToString()), i + 1);
+            //init inputs Matrix
+            inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z });
+            //init targets Matrix
+            targets.SetRow(i, new[] { double.Parse(_dots[i].position.y.ToString()) });
         }
-
+        
         var model = Train(inputs, targets);            
         for (var i = 0; i < 30; i++)
         {
             for (var j = 0; j < 30; j++)
             {
-                /*Instantiate PlanDot with the predicted Y*/
-                var valueToTest = new Matrix(i + "," + j);
-                var result = Predict(model, valueToTest);
-                Instantiate(PlanDot, new Vector3(i, float.Parse(result[1].ToString()), j), Quaternion.identity);
+                //Instantiate PlanDot with the predicted Y
+                var valueToTest = DenseMatrix.OfArray(new double[,] { {i, j} });
+                var result = Predict(model, valueToTest).At(0, 0);
+                Instantiate(PlanDot, new Vector3(i, float.Parse(result.ToString()), j), Quaternion.identity);
             }
         }
     }
 
-    private static Matrix Train(Matrix inputs, Matrix targets)
+    private static Matrix<double> Train(Matrix<double> inputs, Matrix<double> targets)
     {
         //add bias
-        inputs.InsertColumn(Matrix.Ones(inputs.RowCount, 1), inputs.ColumnCount + 1);
+        inputs = inputs.Append(Matrix<double>.Build.Dense(inputs.RowCount, 1, 1.0));
         //pseudo inverse
-        return ((inputs.Transpose()*inputs).Inverse()*inputs.Transpose())*targets;
+        return ((inputs.Transpose()*inputs).PseudoInverse()*inputs.Transpose())*targets;
     }
 
-    private static Matrix Predict(Matrix model, Matrix input)
+    private static Matrix<double> Predict(Matrix<double> model, Matrix<double> input)
     {
         //add bias
-        input.InsertColumn(Matrix.Ones(input.RowCount, 1), input.ColumnCount + 1);
+        input = input.Append(Matrix<double>.Build.Dense(input.RowCount, 1, 1.0));
         return input * model;
     }
 }

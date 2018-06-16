@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
-using CSML;
+﻿using UnityEngine;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 public class Classification : MonoBehaviour {
 	
@@ -12,19 +10,24 @@ public class Classification : MonoBehaviour {
 	public GameObject RedDot;
 
 	private void Start () {
-		/*-------------------------------------unit test start---------------------------------------*/
+		//-------------------------------------unit test start---------------------------------------
 		var modelTest = InitWeight(2);
-		modelTest = TrainPerceptron(modelTest, new Matrix("1.0, 1.0; 1.0, 0.0; 0.0, 1.0; 0.0, 0.0"), new Matrix("1; -1; -1; -1"), 0.1f, 1);
-		Debug.Log(Classify(modelTest, new Matrix("1.0, 0.0"), true));
-		/*-------------------------------------------------------------------------------------------*/
+		var inputsTest = DenseMatrix.OfArray(new[,] {{1.0, 1.0}, {1.0, 0.0}, {0.0, 1.0}, {0.0, 0.0}});
+		var outputsTest = DenseMatrix.OfArray(new[,] {{1.0}, {-1.0}, {-1.0}, {-1.0}});
+		modelTest = TrainPerceptron(modelTest, inputsTest, outputsTest, 0.1f, 1);
+		var valueTest = DenseMatrix.OfArray(new[,] {{1.0, 0.0} });
+		var unitTestResult = Classify(modelTest, valueTest, true) < 0 ? "Success" : "Failure";
+		Debug.Log("Unit test: " + unitTestResult + " !");
+		//-------------------------------------------------------------------------------------------
         
 		var model = InitWeight(2);
-		var inputs = new Matrix();
-		var targets = new Matrix();
+		var inputs = Matrix<double>.Build.Dense(_dots.Length, 2, 0.0);
+		var targets = Matrix<double>.Build.Dense(_dots.Length, 1, 0.0);
+		
 		for (var i = 0; i < _dots.Length; i++)
 		{
-			inputs.InsertRow(new Matrix(_dots[i].position.x + "," + _dots[i].position.z), i + 1);
-			targets.InsertRow(new Matrix(_dots[i].CompareTag("red") ? "1" : "-1"), i + 1);
+			inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z });
+			targets.SetRow(i, new[] { _dots[i].CompareTag("red") ? 1.0 : -1.0 });
 		}
 		
 		model = TrainPerceptron(model, inputs, targets, 0.1f, 1000);
@@ -34,40 +37,40 @@ public class Classification : MonoBehaviour {
 		    for (var j = 0; j < 20; j++)
 		    {
 		        //Instantiate PlanDot
-		        var valueToTest = new Matrix(i + "," + j);
-		        var result = Classify(model, valueToTest, true);
+			    var valueToClassify = DenseMatrix.OfArray(new double[,] { {i, j} });
+		        var result = Classify(model, valueToClassify, true);
 			    Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
 		    }
-		}		
+		}	
 	}
 	
-	private static Matrix InitWeight(int inputDimension)
+	private static Matrix<double> InitWeight(int inputDimension)
 	{
-		return Matrix.Random(1, inputDimension + 1);;
+		return Matrix<double>.Build.Random(1, inputDimension + 1);
 	}
-
-	private static int Classify(Matrix weight, Matrix inputs, bool addBias)
+	
+	private static int Classify(Matrix<double> weight, Matrix<double> inputs, bool addBias)
 	{
 		if (addBias)
-			inputs.InsertColumn(Matrix.Ones(inputs.RowCount, 1), inputs.ColumnCount + 1);
-		return float.Parse((weight * inputs.Transpose())[1].ToString()) > 0 ? 1 : -1;
+			inputs = inputs.Append(Matrix<double>.Build.Dense(inputs.RowCount, 1, 1.0));
+		return (weight * inputs.Transpose()).At(0, 0) > 0 ? 1 : -1;
 	}
-
-	private static Matrix TrainPerceptron(Matrix weights, Matrix inputs, Matrix outputs, float learningRate, int epoch)
+	
+	private static Matrix<double> TrainPerceptron(Matrix<double> weights, Matrix<double> inputs, Matrix<double> outputs, float learningRate, int epoch)
 	{
 		for (var i = 0; i < epoch; i++)
 		{
-			for (var j = 1; j <= inputs.RowCount; j++)
+			for (var j = 0; j < inputs.RowCount; j++)
 			{
 				//W += a(Y^k - g(X^k)X^k
-				var input = inputs.Row(j);
+				var input = inputs.SubMatrix(j, 1, 0, 2);
 				//add bias
-				input.InsertRow(Matrix.Ones(1, 1), input.RowCount + 1);
-				var output = outputs.Row(j);
-				var guess = Classify(weights, input.Transpose(), false);
-				var error = (int.Parse(output[1].ToString()) - guess) * learningRate;
+				input = input.Append(Matrix<double>.Build.Dense(input.RowCount, 1, 1.0));
+				var output = outputs.SubMatrix(j, 1, 0, 1);
+				var guess = Classify(weights, input, false);
+				var error = (output.At(0, 0) - guess) * learningRate;
 				var result = input * error;
-				weights += result.Transpose();
+				weights += result;
 			}
 		}
 		return weights;
