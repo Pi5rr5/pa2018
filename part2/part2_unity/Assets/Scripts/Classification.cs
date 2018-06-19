@@ -45,10 +45,7 @@ public class Classification : MonoBehaviour {
 		        //Instantiate PlanDot
 			    var valueToClassify = NonLinearDip ? DenseMatrix.OfArray(new double[,] { {i, j, i*j} }) : DenseMatrix.OfArray(new double[,] { {i, j} });
 		        var result = Classify(model, valueToClassify, !NonLinearDip);
-			    if(NonLinearDip)
-			    	Instantiate(result < 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
-			    else
-				    Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
+				Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
 		    }
 		}	
 	}
