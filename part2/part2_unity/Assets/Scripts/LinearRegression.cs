@@ -8,8 +8,8 @@ public class LinearRegression : MonoBehaviour
 
     [SerializeField]
     private Transform[] _dots;
-    
     public GameObject PlanDot;
+    public int surface;
     
     private void Start()
     {
@@ -17,10 +17,8 @@ public class LinearRegression : MonoBehaviour
         //-------------------------------------unit test start---------------------------------------
         Matrix<double> inputsTest = DenseMatrix.OfArray(new [,] { {0.0}, {1.0}, {2.0} });
         Matrix<double> targetsTest = DenseMatrix.OfArray(new [,] { {2.0}, {5.0}, {8.0} });
-
         var modelTest = Train(inputsTest, targetsTest);
         Matrix<double> testValue = DenseMatrix.OfArray(new [,] { {4.0} });
-
         var resultTest = Predict(modelTest, testValue);
         //unit test result
         var unitTestResult = (resultTest.At(0, 0) == 14.0) ? "Success" : "Failure";
@@ -39,9 +37,9 @@ public class LinearRegression : MonoBehaviour
         }
         
         var model = Train(inputs, targets);            
-        for (var i = 0; i < 30; i++)
+        for (var i = 0; i < surface; i++)
         {
-            for (var j = 0; j < 30; j++)
+            for (var j = 0; j < surface; j++)
             {
                 //Instantiate PlanDot with the predicted Y
                 var valueToTest = DenseMatrix.OfArray(new double[,] { {i, j} });

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 
@@ -8,6 +9,8 @@ public class Classification : MonoBehaviour {
 	private Transform[] _dots;
 	public GameObject BlueDot;
 	public GameObject RedDot;
+	public bool NonLinearDip;
+
 
 	private void Start () {
 		//-------------------------------------unit test start---------------------------------------
@@ -21,25 +24,31 @@ public class Classification : MonoBehaviour {
 		//-------------------------------------------------------------------------------------------
         
 		var model = InitWeight(2);
-		var inputs = Matrix<double>.Build.Dense(_dots.Length, 2, 0.0);
+		var inputs = Matrix<double>.Build.Dense(_dots.Length, NonLinearDip ? 3 : 2, 0.0);
 		var targets = Matrix<double>.Build.Dense(_dots.Length, 1, 0.0);
 		
 		for (var i = 0; i < _dots.Length; i++)
 		{
-			inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z });
-			targets.SetRow(i, new[] { _dots[i].CompareTag("red") ? 1.0 : -1.0 });
+			if (NonLinearDip)
+				inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z, _dots[i].position.x * _dots[i].position.z });
+			else
+				inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z });
+			targets.SetRow(i, new[] { _dots[i].CompareTag("red") ? 1.0 : -1 });
 		}
 		
 		model = TrainPerceptron(model, inputs, targets, 0.1f, 1000);
 		
-		for (var i = 0; i < 20; i++)
+		for (var i = -10; i < 10; i++)
 		{
-		    for (var j = 0; j < 20; j++)
+		    for (var j = -10; j < 10; j++)
 		    {
 		        //Instantiate PlanDot
-			    var valueToClassify = DenseMatrix.OfArray(new double[,] { {i, j} });
-		        var result = Classify(model, valueToClassify, true);
-			    Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
+			    var valueToClassify = NonLinearDip ? DenseMatrix.OfArray(new double[,] { {i, j, i*j} }) : DenseMatrix.OfArray(new double[,] { {i, j} });
+		        var result = Classify(model, valueToClassify, !NonLinearDip);
+			    if(NonLinearDip)
+			    	Instantiate(result < 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
+			    else
+				    Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
 		    }
 		}	
 	}
