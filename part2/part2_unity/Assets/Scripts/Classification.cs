@@ -9,7 +9,7 @@ public class Classification : MonoBehaviour {
 	private Transform[] _dots;
 	public GameObject BlueDot;
 	public GameObject RedDot;
-	public bool NonLinearDip;
+	public bool NonLinearDeep;
 
 
 	private void Start () {
@@ -18,33 +18,33 @@ public class Classification : MonoBehaviour {
 		var inputsTest = DenseMatrix.OfArray(new[,] {{1.0, 1.0}, {1.0, 0.0}, {0.0, 1.0}, {0.0, 0.0}});
 		var outputsTest = DenseMatrix.OfArray(new[,] {{1.0}, {-1.0}, {-1.0}, {-1.0}});
 		modelTest = TrainPerceptron(modelTest, inputsTest, outputsTest, 0.1f, 1);
-		var valueTest = DenseMatrix.OfArray(new[,] {{1.0, 0.0} });
+		var valueTest = DenseMatrix.OfArray(new[,] {{1.0, 	0.0} });
 		var unitTestResult = Classify(modelTest, valueTest, true) < 0 ? "Success" : "Failure";
 		Debug.Log("Unit test: " + unitTestResult + " !");
 		//-------------------------------------------------------------------------------------------
         
-		var model = InitWeight(2);
-		var inputs = Matrix<double>.Build.Dense(_dots.Length, NonLinearDip ? 3 : 2, 0.0);
+		var model = NonLinearDeep ? InitWeight(3) : InitWeight(2);
+		var inputs = Matrix<double>.Build.Dense(_dots.Length, NonLinearDeep ? 3 : 2, 0.0);
 		var targets = Matrix<double>.Build.Dense(_dots.Length, 1, 0.0);
 		
 		for (var i = 0; i < _dots.Length; i++)
 		{
-			if (NonLinearDip)
+			if (NonLinearDeep)
 				inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z, _dots[i].position.x * _dots[i].position.z });
 			else
 				inputs.SetRow(i, new[] { double.Parse(_dots[i].position.x.ToString()), _dots[i].position.z });
 			targets.SetRow(i, new[] { _dots[i].CompareTag("red") ? 1.0 : -1 });
 		}
 		
-		model = TrainPerceptron(model, inputs, targets, 0.1f, 1000);
+		model = TrainPerceptron(model, inputs, targets, 0.01f, 1000);
 		
-		for (var i = -10; i < 10; i++)
+		for (var i = -10; i <= 10; i++)
 		{
-		    for (var j = -10; j < 10; j++)
+		    for (var j = -10; j <= 10; j++)
 		    {
 		        //Instantiate PlanDot
-			    var valueToClassify = NonLinearDip ? DenseMatrix.OfArray(new double[,] { {i, j, i*j} }) : DenseMatrix.OfArray(new double[,] { {i, j} });
-		        var result = Classify(model, valueToClassify, !NonLinearDip);
+			    var valueToClassify = NonLinearDeep ? DenseMatrix.OfArray(new double[,] { {i, j, i*j} }) : DenseMatrix.OfArray(new double[,] { {i, j} });
+		        var result = Classify(model, valueToClassify, true);
 				Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
 		    }
 		}	
@@ -69,7 +69,7 @@ public class Classification : MonoBehaviour {
 			for (var j = 0; j < inputs.RowCount; j++)
 			{
 				//W += a(Y^k - g(X^k)X^k
-				var input = inputs.SubMatrix(j, 1, 0, 2);
+				var input = inputs.SubMatrix(j, 1, 0, inputs.ColumnCount);
 				//add bias
 				input = input.Append(Matrix<double>.Build.Dense(input.RowCount, 1, 1.0));
 				var output = outputs.SubMatrix(j, 1, 0, 1);
