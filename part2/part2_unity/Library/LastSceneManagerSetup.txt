@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ClassifXOR.unity
+- path: Assets/Scenes/LinearRegression.unity
   isLoaded: 1
   isActive: 1

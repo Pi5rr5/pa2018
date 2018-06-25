@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
 
 public class Classification : MonoBehaviour {
 	
@@ -10,8 +10,59 @@ public class Classification : MonoBehaviour {
 	public GameObject BlueDot;
 	public GameObject RedDot;
 	public bool NonLinearDeep;
+	public float LearningRate;
+	public int Epochs;
+	
+	[DllImport("Unity_dll")]
+	private static extern IntPtr InitWeight(int dimension);
+	
+	[DllImport("Unity_dll")]
+	private static extern float Classify(IntPtr weights, int weightsRows, int weightsCols, float[] inputs, int inputsRows, int inputsCols, bool addBias);
+	
+	[DllImport("Unity_dll")]
+	private static extern IntPtr TrainPerceptron(IntPtr weights, int weightsRows, int weightsCols, float[] inputs, int inputsRows, int inputsCols, float[] outputs, int outputsRows, int outputsCols, float learningRate, int epoch);
 
 
+	private void Start()
+	{
+		var model = NonLinearDeep ? InitWeight(dimension: 1) : InitWeight(dimension: 2);
+		var dotsInputs = new List<float>();
+		var dotsTargets = new List<float>();
+		
+		foreach (var dot in _dots)
+		{
+			if (NonLinearDeep)
+			{
+				dotsInputs.Add(item: dot.position.x * dot.position.z);
+			}
+			else
+			{
+				dotsInputs.Add(item: dot.position.x);
+				dotsInputs.Add(item: dot.position.z);
+			}
+
+			dotsTargets.Add(item: dot.CompareTag(tag: "red") ? 1.0f : -1.0f);
+		}
+		
+		if(NonLinearDeep)
+			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 3, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count, inputsCols: 1, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
+		else
+			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 3, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count / 2, inputsCols: 2, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
+		for (var i = -10f; i <= 10f; i += 1f)
+		{
+			for (var j = -10f; j <= 10f; j += 1f)
+			{
+				//Instantiate PlanDot
+				var valueToClassify = new float[] {i, j};
+				var result = Classify(weights: model, weightsRows: 1, weightsCols: 3, inputs: valueToClassify, inputsRows: 1, inputsCols: 2, addBias: true);
+				//Debug.Log(result);
+				Instantiate(original: result > 0 ? RedDot : BlueDot, position: new Vector3(x: i, y: -1, z: j), rotation: Quaternion.identity);
+			}
+		}
+	}
+
+
+	/*
 	private void Start () {
 		//-------------------------------------unit test start---------------------------------------
 		var modelTest = InitWeight(2);
@@ -47,7 +98,7 @@ public class Classification : MonoBehaviour {
 		        var result = Classify(model, valueToClassify, true);
 				Instantiate(result > 0 ? RedDot : BlueDot, new Vector3(i, -1, j), Quaternion.identity);
 		    }
-		}	
+		}
 	}
 	
 	private static Matrix<double> InitWeight(int inputDimension)
@@ -73,6 +124,10 @@ public class Classification : MonoBehaviour {
 				//add bias
 				input = input.Append(Matrix<double>.Build.Dense(input.RowCount, 1, 1.0));
 				var output = outputs.SubMatrix(j, 1, 0, 1);
+				Debug.Log(weights.RowCount);
+				Debug.Log(weights.ColumnCount);
+				Debug.Log(input.RowCount);
+				Debug.Log(input.ColumnCount);
 				var guess = Classify(weights, input, false);
 				var error = (output.At(0, 0) - guess) * learningRate;
 				var result = input * error;
@@ -81,4 +136,5 @@ public class Classification : MonoBehaviour {
 		}
 		return weights;
 	}
+	*/
 }
