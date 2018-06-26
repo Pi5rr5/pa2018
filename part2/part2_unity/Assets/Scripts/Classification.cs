@@ -39,22 +39,34 @@ public class Classification : MonoBehaviour {
 			{
 				dotsInputs.Add(item: dot.position.x);
 				dotsInputs.Add(item: dot.position.z);
+				//Debug.Log(dot.position.x + " : " + dot.position.z);
 			}
 
 			dotsTargets.Add(item: dot.CompareTag(tag: "red") ? 1.0f : -1.0f);
 		}
+
+		//var a = dotsInputs.ToArray();
 		
 		if(NonLinearDeep)
-			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 3, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count, inputsCols: 1, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
+			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 2, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count, inputsCols: 1, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
 		else
 			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 3, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count / 2, inputsCols: 2, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
 		for (var i = -10f; i <= 10f; i += 1f)
 		{
 			for (var j = -10f; j <= 10f; j += 1f)
 			{
+				var result = 0f;
 				//Instantiate PlanDot
-				var valueToClassify = new float[] {i, j};
-				var result = Classify(weights: model, weightsRows: 1, weightsCols: 3, inputs: valueToClassify, inputsRows: 1, inputsCols: 2, addBias: true);
+				if (NonLinearDeep)
+				{
+					var valueToClassify = new float[] {i*j};
+					result = Classify(weights: model, weightsRows: 1, weightsCols: 2, inputs: valueToClassify, inputsRows: 1, inputsCols: 1, addBias: true);
+				}
+				else
+				{
+					var valueToClassify = new float[] {i, j};
+					result = Classify(weights: model, weightsRows: 1, weightsCols: 3, inputs: valueToClassify, inputsRows: 1, inputsCols: 2, addBias: true);	
+				}
 				//Debug.Log(result);
 				Instantiate(original: result > 0 ? RedDot : BlueDot, position: new Vector3(x: i, y: -1, z: j), rotation: Quaternion.identity);
 			}

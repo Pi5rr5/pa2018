@@ -13,9 +13,9 @@ extern "C" {
 		MatrixXf outputs = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(out, outRows, outCols);
 		//add bias
 		inputs.conservativeResize(inputs.rows(), inputs.cols() + 1);
-		inputs.col(inputs.cols() - 1).setOnes();	
+		inputs.col(inputs.cols() - 1).setOnes();
 		//apply pseudo inverse
-		MatrixXf model = ((inputs.transpose()*inputs).lu().solve(inputs.transpose()))*outputs;
+		MatrixXf model = ((inputs.transpose()*inputs).ldlt().solve(inputs.transpose()))*outputs;
 		//convert matrix to float*
 		float *result;
 		result = new float[model.rows()*model.cols()];
@@ -68,13 +68,13 @@ extern "C" {
 			for (int j = 0; j < inRows; j++)
 			{
 				//W += a(Y^k - g(X^k)X^k
-				auto inputRow = inputs.row(j).data();
-				MatrixXf input = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(inputRow, 1, inCols);
+				MatrixXf input = inputs.row(j);
+
 				//add bias
 				input.conservativeResize(input.rows(), input.cols() + 1);
 				input.col(input.cols() - 1).setOnes();
 
-				auto output = outputs.row(j);
+				MatrixXf output = outputs.row(j);
 				auto guess = Classify(wei, int(weights.rows()), int(weights.cols()), in, int(input.rows()), int(input.cols()), false);
 				float error = (output(0, 0) - guess) * learningRate;
 				auto result = input * error;
