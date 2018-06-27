@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using Object = System.Object;
 
 public class Classification : MonoBehaviour {
 	
 	[SerializeField]
-	private Transform[] _dots;
+	private Transform _dots;
 	public GameObject BlueDot;
 	public GameObject RedDot;
 	public bool NonLinearDeep;
@@ -28,32 +30,30 @@ public class Classification : MonoBehaviour {
 		var model = NonLinearDeep ? InitWeight(dimension: 1) : InitWeight(dimension: 2);
 		var dotsInputs = new List<float>();
 		var dotsTargets = new List<float>();
-		
-		foreach (var dot in _dots)
+
+		for(var i = 0; i < _dots.childCount; i++)
 		{
 			if (NonLinearDeep)
 			{
-				dotsInputs.Add(item: dot.position.x * dot.position.z);
+				dotsInputs.Add(item: _dots.GetChild(i).localPosition.x *  _dots.GetChild(i).localPosition.z);
 			}
 			else
 			{
-				dotsInputs.Add(item: dot.position.x);
-				dotsInputs.Add(item: dot.position.z);
-				//Debug.Log(dot.position.x + " : " + dot.position.z);
+				dotsInputs.Add(item:  _dots.GetChild(i).localPosition.x);
+				dotsInputs.Add(item:  _dots.GetChild(i).localPosition.z);
+				//Debug.Log(_dots.GetChild(i).localPosition.x + " : " + _dots.GetChild(i).localPosition.z);
 			}
 
-			dotsTargets.Add(item: dot.CompareTag(tag: "red") ? 1.0f : -1.0f);
+			dotsTargets.Add(item:  _dots.GetChild(i).CompareTag(tag: "red") ? 1.0f : -1.0f);
 		}
-
-		//var a = dotsInputs.ToArray();
 		
 		if(NonLinearDeep)
 			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 2, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count, inputsCols: 1, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
 		else
 			model = TrainPerceptron(weights: model, weightsRows: 1, weightsCols: 3, inputs: dotsInputs.ToArray(), inputsRows: dotsInputs.Count / 2, inputsCols: 2, outputs: dotsTargets.ToArray(), outputsRows: dotsTargets.Count, outputsCols: 1, learningRate: LearningRate, epoch: Epochs);
-		for (var i = -10f; i <= 10f; i += 1f)
+		for (var i = -10; i <= 10; i ++)
 		{
-			for (var j = -10f; j <= 10f; j += 1f)
+			for (var j = -10; j <= 10; j ++)
 			{
 				var result = 0f;
 				//Instantiate PlanDot
@@ -67,12 +67,10 @@ public class Classification : MonoBehaviour {
 					var valueToClassify = new float[] {i, j};
 					result = Classify(weights: model, weightsRows: 1, weightsCols: 3, inputs: valueToClassify, inputsRows: 1, inputsCols: 2, addBias: true);	
 				}
-				//Debug.Log(result);
-				Instantiate(original: result > 0 ? RedDot : BlueDot, position: new Vector3(x: i, y: -1, z: j), rotation: Quaternion.identity);
+				Instantiate(original: result > 0 ? RedDot : BlueDot, position: new Vector3(x: i, y: -1.0f, z: j), rotation: Quaternion.identity);
 			}
 		}
 	}
-
 
 	/*
 	private void Start () {

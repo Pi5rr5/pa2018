@@ -70,13 +70,18 @@ extern "C" {
 				//W += a(Y^k - g(X^k)X^k
 				MatrixXf input = inputs.row(j);
 
-				//add bias
+				//add bias and map as float*
 				input.conservativeResize(input.rows(), input.cols() + 1);
 				input.col(input.cols() - 1).setOnes();
+				float* mInput;
+				mInput = new float[input.rows() * input.cols()];
+				Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(mInput, input.rows(), input.cols()) = input;
+
+				auto guess = Classify(wei, int(weights.rows()), int(weights.cols()), mInput, int(input.rows()), int(input.cols()), false);
 
 				MatrixXf output = outputs.row(j);
-				auto guess = Classify(wei, int(weights.rows()), int(weights.cols()), in, int(input.rows()), int(input.cols()), false);
 				float error = (output(0, 0) - guess) * learningRate;
+
 				auto result = input * error;
 				weights += result;
 			}
