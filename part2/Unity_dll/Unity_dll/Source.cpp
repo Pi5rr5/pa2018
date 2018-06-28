@@ -1,5 +1,7 @@
 #include <iostream>
 #include <Eigen/Dense>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 using namespace Eigen;
@@ -41,6 +43,7 @@ extern "C" {
 		float* weight;
 		weight = new float[dimension + 1];
 		// init weight between -1.0f & 1.0f
+		srand((int)time(0));
 		for (int i = 0; i < dimension + 1; i++)
 			weight[i] = (rand() / (RAND_MAX / (2.0f))) - 1.0f;
 		return weight;
@@ -77,13 +80,14 @@ extern "C" {
 				mInput = new float[input.rows() * input.cols()];
 				Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(mInput, input.rows(), input.cols()) = input;
 
-				auto guess = Classify(wei, int(weights.rows()), int(weights.cols()), mInput, int(input.rows()), int(input.cols()), false);
+				float guess = Classify(wei, int(weights.rows()), int(weights.cols()), mInput, int(input.rows()), int(input.cols()), false);
 
 				MatrixXf output = outputs.row(j);
 				float error = (output(0, 0) - guess) * learningRate;
 
-				auto result = input * error;
+				MatrixXf result = input * error;
 				weights += result;
+				Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(wei, weights.rows(), weights.cols()) = weights;
 			}
 		}
 
