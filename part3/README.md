@@ -1,19 +1,4 @@
-# Quick Start
+# Rapport rendu 15/07/2018
 
-## Start tensorflow backend
-
-```console
-activate tensorflowLatest
-```
-
-## Start jupyter noteboob
-
-```console
-jupyter notebook
-```
-
-## Start tensorboard
-
-```console
-tensorboard --logdir=training:./logs/
-```
+* [Projet Annuel 3 Big Data](./MLIBD.md)
+* [Machine Learning Toolbox](./MLtoolbox.md)
