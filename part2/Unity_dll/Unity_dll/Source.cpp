@@ -13,6 +13,22 @@ extern "C" {
 		return 42;
 	}
 
+	__declspec(dllexport) int pass(float* a)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (a[i] != i)
+				return 0;
+		}
+		return 1;
+	}
+
+	__declspec(dllexport) void read(int16_t* input, size_t size)
+	{
+		for (int i = 0; i<size; i++)
+			input[i] = i;
+	}
+
 
 	// LINEAR REGRESSION //
 
@@ -114,26 +130,25 @@ extern "C" {
 	__declspec(dllexport) float* findPhi(float* in, int inRows, int inCols, float gamma)
 	{
 		MatrixXf inputs = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(in, inRows, inCols);
-		MatrixXf phi = MatrixXf::Zero(inCols, inCols);
+		MatrixXf phi = MatrixXf::Zero(inRows, inRows);
 		for(int i = 0; i < phi.rows(); i++)
 		{
 			for (int j = 0; j < phi.cols(); j++)
 			{
-				float normeRes = pow((inputs.col(i) - inputs.col(j)).norm(), 2);
+				float normeRes = pow((inputs.row(i) - inputs.row(j)).norm(), 2);
 				phi(i, j) = exp(-gamma * normeRes);
 			}
 		}
 		float* phiResult;
 		phiResult = new float[phi.rows()*phi.cols()];
-		Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(phiResult, phi.rows(), phi.cols()) = phi;
+		Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(phiResult, phi.rows(), phi.rows()) = phi;
 		return phiResult;
 	}
 
 	__declspec(dllexport) float* trainNaiveRBF(float* in, int inRows, int inCols, float* out, int outRows, int outCols, float gamma)
 	{
 		MatrixXf outputs = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(out, outRows, outCols);
-		float* tmp = findPhi(in, inRows, inCols, gamma);
-		MatrixXf phi = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(tmp, inCols, inCols);
+		MatrixXf phi = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(findPhi(in, inRows, inCols, gamma), inRows, inRows);
 		MatrixXf res = phi.ldlt().solve(outputs);
 		float* trainResult;
 		trainResult = new float[res.rows()*res.cols()];
@@ -148,9 +163,9 @@ extern "C" {
 		MatrixXf predict = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(pre, preRows, preCols);
 		MatrixXf weights = Map<Matrix<float, Dynamic, Dynamic, RowMajor> >(wei, weiRows, weiCols);
 		MatrixXf sum = MatrixXf::Zero(weiRows, weiCols);
-		for (int i = 0; i < inCols; i++)
+		for (int i = 0; i < inRows; i++)
 		{
-			float normeRes = pow((predict - inputs.col(i)).norm(), 2);
+			float normeRes = pow((predict - inputs.row(i)).norm(), 2);
 			sum.row(i) = weights.row(i) * exp(-gamma * normeRes);
 		}
 		return sum.colwise().sum()(0,0);
