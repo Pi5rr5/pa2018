@@ -3,6 +3,8 @@ import datetime
 import tensorflow as tf
 from keras.callbacks import TensorBoard
 
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
 
 class TrainValTensorBoard(TensorBoard):
     def __init__(self, log_dir='./logs', **kwargs):
