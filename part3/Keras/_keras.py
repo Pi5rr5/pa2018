@@ -18,37 +18,17 @@ x_test = inputs[round(inputs.shape[0]*0.8): inputs.shape[0]]
 y_test = outputs[round(inputs.shape[0]*0.8): inputs.shape[0]]
 
 model = Sequential()
-model.add(Dense(64, input_dim=20, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dense(20, input_dim=20, activation='tanh'))
 model.add(Dense(1, activation='sigmoid'))
-
-model.compile(loss='binary_crossentropy', optimizer=rmsprop(), metrics=[binary_accuracy])
+model.compile(loss='binary_crossentropy', optimizer=adam(), metrics=[binary_accuracy])
 
 model.fit(x_train, y_train,
           validation_data=(x_test, y_test),
-          epochs=1000,
-          batch_size=128,
+          epochs=500,
+          batch_size=96,
           callbacks=[TrainValTensorBoard(write_graph=False)])
-score = model.evaluate(x_test, y_test, verbose=1, batch_size=128)
+score = model.evaluate(x_test, y_test, verbose=1, batch_size=96)
 
 unique, counts = np.unique(outputs, return_counts=True)
 train_repartition = dict(zip(unique, counts))
 print(train_repartition)
-
-# use relu and 4 layer 4096 to fit at 98%
-# use adam as optimizer
-# model.add(Dense(1, activation='sigmoid'))
-# tanh
-#model.compile(loss='binary_crossentropy', optimizer=sgd(0.01, momentum=0.9), metrics=[binary_accuracy])
-# relu
-# model.compile(loss='binary_crossentropy', optimizer=adam(), metrics=[binary_accuracy])
-
-# experiment_id = "4_layer_2_neurones_dropout_1000_tanh/"
-# tb_callback = keras.callbacks.TensorBoard('./logs/' + experiment_id)
-
-# model.fit(inputs, outputs, epochs=1000, verbose=1, validation_split=0.2, batch_size=6, callbacks=[tb_callback])
-
-# test
-#model.fit(inputs, outputs, epochs=10000, verbose=1, validation_split=0.2, batch_size=64)
