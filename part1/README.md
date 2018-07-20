@@ -1,9 +1,9 @@
 # Recherche de plus court chemin
 
-## recherche local naïve [code](Assets/Scripts/MainScript.cs#L86)
-## recuit similé [code](Assets/Scripts/MainScript.cs#L372)
-## algorithme génétique [code](Assets/Scripts/MainScript.cs#L439)
-## djikstra [code](Assets/Scripts/MainScript.cs#L137)
+## Recherche local naïve [code](Assets/Scripts/MainScript.cs#L86)
+## Recuit similé [code](Assets/Scripts/MainScript.cs#L372)
+## Algorithme génétique [code](Assets/Scripts/MainScript.cs#L439)
+## Djikstra [code](Assets/Scripts/MainScript.cs#L137)
 ## A* [code](Assets/Scripts/MainScript.cs#L259)
 
 <p align="center">
