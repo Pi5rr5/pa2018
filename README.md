@@ -1,4 +1,4 @@
-# Bachelor Annual Project IDB
+# Bachelor Annual Project IBD
 
 ## Part 1: Recherche de plus court chemin
 
