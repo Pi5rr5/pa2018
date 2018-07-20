@@ -30,11 +30,12 @@ outputs_train = outputs[0:int(outputs.shape[0] * 0.8)]
 inputs_test = inputs[int(inputs.shape[0] * 0.8):inputs.shape[0]]
 outputs_test = outputs[int(outputs.shape[0] * 0.8):outputs.shape[0]]
 
+print("Training model ...")
 model = C.InitWeight(20)
 model = C.TrainPerceptron(model, 1, 21,
                           as_pointer(inputs_train), inputs_train.shape[0], inputs_train.shape[1],
                           as_pointer(outputs_train), outputs_train.shape[0], outputs_train.shape[1],
-                          0.01, 100)
+                          0.1, 100)
 precision = 0
 for i, val in enumerate(inputs_test):
     res = C.Classify(model, 1, 21, as_pointer(inputs_test[i]), 1, 20, 1)
