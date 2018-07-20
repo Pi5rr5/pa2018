@@ -1,4 +1,6 @@
-# Modèle Linéaire et Perceptron Multi Couches
+# Linear model and multi layer perceptron (MLP)
 
-## Classification (règle de Rosenblatt et signe de la somme des entrées)
-## Régression (Pseudo Inverse)
+## Classification
+* [Unity_dll/Unity_dll/Source.cpp#L64](Unity_dll/Unity_dll/Source.cpp#L64)
+## Regression
+* [Unity_dll/Unity_dll/Source.cpp#L33](Unity_dll/Unity_dll/Source.cpp#L33)
