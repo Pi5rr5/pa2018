@@ -21,7 +21,7 @@ data = np.genfromtxt('inputs.csv', delimiter=",", skip_header=1, dtype=float)
 np.random.shuffle(data)
 # split inputs & outputs
 inputs = data[0:, 0:20].astype('float32')
-outputs = data[0:, 20:21].astype(int)
+outputs = data[0:, 20:21].astype('float32')
 # split train and test data set
 inputs_train = inputs[0:int(inputs.shape[0] * 0.8)]
 outputs_train = outputs[0:int(outputs.shape[0] * 0.8)]

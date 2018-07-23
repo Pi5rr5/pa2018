@@ -29,8 +29,14 @@ public class NaiveRbf : MonoBehaviour {
 			
 			dotsInputs.Add(item:  _dots.GetChild(i).localPosition.x);
 			dotsInputs.Add(item:  _dots.GetChild(i).localPosition.z);
-
-			dotsTargets.Add(item:  _dots.GetChild(i).CompareTag(tag: "red") ? 1.0f : -1.0f);
+			if (Regression)
+			{
+				dotsTargets.Add(_dots.GetChild(i).localPosition.y);
+			}
+			else
+			{
+				dotsTargets.Add(item:  _dots.GetChild(i).CompareTag(tag: "red") ? 1.0f : -1.0f);
+			}
 		}
 		
 		var weights = trainNaiveRBF(dotsInputs.ToArray(), dotsInputs.Count / 2, 2, dotsTargets.ToArray(), dotsTargets.Count, 1, Gamma);    
